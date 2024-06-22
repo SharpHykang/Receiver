@@ -1,0 +1,32 @@
+﻿<Window x:Class="Receiver.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Receiver"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Image Margin="47,47,437,47" Width="300" Name="imageControl">
+            <Image.Source>
+                <BitmapImage UriSource="pack://application:,,,/Resources/original/DefaultImage.jpg"/>
+            </Image.Source>
+        </Image>
+        <TextBlock HorizontalAlignment="Left" Margin="432,85,0,0" TextWrapping="Wrap" Text="当前状态：" VerticalAlignment="Top"/>
+        <TextBlock Name="status" HorizontalAlignment="Left" Margin="500,85,0,0" TextWrapping="Wrap" Text="无任何状态" VerticalAlignment="Top"/>
+        <TextBlock Text="判定结果：" HorizontalAlignment="Left" Margin="432,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Grid Name="radioGroup">
+            <RadioButton Content="OK" Tag="OK" GroupName="result" HorizontalAlignment="Left" Margin="500,135,0,0" VerticalAlignment="Top"/>
+            <RadioButton Content="NG" Tag="NG" GroupName="result" HorizontalAlignment="Left" Margin="550,135,0,0" VerticalAlignment="Top"/>
+        </Grid>
+        <DataGrid Name="resultDataGrid" AutoGenerateColumns="False" HeadersVisibility="Column"
+                  CanUserAddRows="False" Margin="432,230,40,51" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding id}" Width="*"/>
+                <DataGridTextColumn Header="Result" Binding="{Binding result}" Width="2*"/>
+                <DataGridTextColumn Header="FileName" Binding="{Binding fileName}" Width="2*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="点击确定" HorizontalAlignment="Left" Margin="432,176,0,0" VerticalAlignment="Top" Width="160" Height="28" Click="determine_click"/>
+    </Grid>
+</Window>
